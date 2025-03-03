@@ -11,6 +11,8 @@ echo_color() {
   echo -e "${color}${message}${NC}"
 }
 
+cd ~
+
 if ! command -v brew &> /dev/null; then
   echo_color $YELLOW "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -51,6 +53,7 @@ luajit
 neofetch
 redis
 yazi
+stow
 )
 
 for tool in "${cli_tools[@]}"; do
@@ -115,5 +118,31 @@ killall SystemUIServer
 # Clean up
 echo_color $YELLOW "Cleaning up..."
 brew cleanup
+
+
+# Clone dotfiles
+git clone https://github.com/grantmca/.dotfiles.git
+
+cd .dotfiles
+
+configs=(
+ghostty
+htop
+nvim
+github-copilot
+ssh
+skhd
+task
+tmux
+yabai
+zsh
+zk
+wezterm
+)
+
+for config in "${configs[@]}"; do
+  echo_color $YELLOW "Configuring $config..."
+  stow $config
+done
 
 echo_color $GREEN "Setup complete! Some changes may require a system restart to take effect."
