@@ -62,6 +62,7 @@ neovim
 zk
 node
 rbenv
+solargraph
 pyenv
 pyright
 postgresql@14
@@ -211,7 +212,7 @@ EOF
 killall Dock
 
 # Restart Service
-yabai --restart-service
+yabai --start-service
 skhd --start-service
 
 if confirm "Have you given mac yabai permission?"; then
@@ -220,7 +221,19 @@ else
   echo "Please complete the required setup."
 fi
 
+if confirm "Have you given mac skhd permission?"; then
+  echo "Great, moving forward..."
+else
+  echo "Please complete the required setup."
+fi
+
 if confirm "Have you set the app bar to small and hide when not in use?"; then
+  echo "Great, moving forward..."
+else
+  echo "Please complete the required setup."
+fi
+
+if confirm "Have you set caps lock to ctrl?"; then
   echo "Great, moving forward..."
 else
   echo "Please complete the required setup."
