@@ -86,6 +86,7 @@ stow
 bitwarden-cli
 )
 
+
 for tool in "${cli_tools[@]}"; do
   if brew list $tool &>/dev/null; then
     echo_color $GREEN "$tool is already installed"
@@ -101,7 +102,7 @@ apps=(
 docker
 # google-chrome
 visual-studio-code
-firefox
+# firefox
 spotify
 # slack
 ghostty
@@ -243,6 +244,12 @@ else
 fi
 
 if confirm "Have you set caps lock to ctrl?"; then
+  echo "Great, moving forward..."
+else
+  echo "Please complete the required setup."
+fi
+
+if confirm "Have you installed tmux tmp using ctrl a I?"; then
   echo "Great, moving forward..."
 else
   echo "Please complete the required setup."
