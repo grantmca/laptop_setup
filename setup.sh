@@ -141,6 +141,9 @@ brew cleanup
 git clone https://github.com/grantmca/.dotfiles.git
 
 cd .dotfiles
+git config user.name "Grant McAllister"
+git config user.name "grantmca2221@gmail.com"
+cd ~
 
 configs=(
 ghostty
