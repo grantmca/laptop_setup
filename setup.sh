@@ -206,4 +206,10 @@ else
   echo "Please complete the required setup."
 fi
 
+if confirm "Have you set the app bar to small and hide when not in use?"; then
+  echo "Great, moving forward..."
+else
+  echo "Please complete the required setup."
+fi
+
 echo_color $GREEN "Setup complete! Some changes may require a system restart to take effect."
