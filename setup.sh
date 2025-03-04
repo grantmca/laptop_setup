@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -77,7 +77,7 @@ firefox
 spotify
 slack
 ghostty
-aws
+aws-cli
 bitwarden
 chromedriver
 gimp
@@ -163,13 +163,6 @@ encrypted_files=(
 ~/.dotfiles/zsh/.config/zsh/zsh-keys
 )
 
-for file in "${encrypted_files[@]}"; do
-  if [ -f "$file" ]; then
-    ansible-vault decrypt "$file" 2>/dev/null || true
-    echo "Attempted to decrypt: $file"
-  else
-    echo "File not found: $file"
-  fi
-done
+ansible-vault decrypt "${encrypted_files[@]}" 2>/dev/null || true
 
 echo_color $GREEN "Setup complete! Some changes may require a system restart to take effect."
