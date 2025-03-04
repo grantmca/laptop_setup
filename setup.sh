@@ -38,6 +38,7 @@ brew update
 
 echo_color $YELLOW "Installing command line tools..."
 cli_tools=(
+imagemagick
 ipython
 ansible
 git
@@ -180,6 +181,18 @@ encrypted_files=(
 ansible-vault decrypt "${encrypted_files[@]}" 2>/dev/null || true
 
 git clone git@github.com:grantmca/notebook.git
+
+magick -size 1920x1080 xc:"#1a1b26" $HOME/Pictures/tokyo-night-storm.png
+
+osascript <<EOF
+tell application "System Events"
+  set allDesktops to a reference to every desktop
+  repeat with d in allDesktops
+    set picture of d to (POSIX file "$HOME/Pictures/tokyo-night-storm.png") as text
+  end repeat
+end tell
+EOF
+killall Dock
 
 # Restart Service
 yabai --restart-service
