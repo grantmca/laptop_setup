@@ -99,11 +99,11 @@ done
 echo_color $YELLOW "Installing applications..."
 apps=(
 docker
-google-chrome
+# google-chrome
 visual-studio-code
 firefox
 spotify
-slack
+# slack
 ghostty
 aws-cli
 bitwarden
@@ -179,11 +179,20 @@ for config in "${configs[@]}"; do
   stow $config
 done
 
+# Install plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 cd ~
 
 # Install Zap
 
-zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+if ! command -v zap &> /dev/null; then
+  echo_color $YELLOW "Installing Zap..."
+  zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+  export PATH="/opt/homebrew/bin:$PATH"
+else
+  echo_color $GREEN "Homebrew is already installed"
+fi
 
 # Decrypt some of our files
 
