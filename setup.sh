@@ -36,6 +36,7 @@ fi
 if ! command -v brew &> /dev/null; then
   echo_color $YELLOW "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  export PATH="/opt/homebrew/bin:$PATH"
 else
   echo_color $GREEN "Homebrew is already installed"
 fi
