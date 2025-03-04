@@ -166,4 +166,6 @@ encrypted_files=(
 
 ansible-vault decrypt "${encrypted_files[@]}" 2>/dev/null || true
 
+git clone git@github.com:grantmca/notebook.git
+
 echo_color $GREEN "Setup complete! Some changes may require a system restart to take effect."
