@@ -26,6 +26,13 @@ confirm() {
 
 cd ~
 
+if xcode-select --print-path &>/dev/null; then
+    echo "Apple Command Line Tools are already installed."
+else
+    echo "Installing Apple Command Line Tools..."
+    xcode-select --install
+fi
+
 if ! command -v brew &> /dev/null; then
   echo_color $YELLOW "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
