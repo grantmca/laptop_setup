@@ -25,6 +25,7 @@ brew update
 
 echo_color $YELLOW "Installing command line tools..."
 cli_tools=(
+ipython
 ansible
 git
 curl
