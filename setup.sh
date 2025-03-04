@@ -225,6 +225,38 @@ killall Dock
 yabai --start-service
 skhd --start-service
 
+# Install plugins
+
+export BROWSER="firefox"
+
+if confirm "Have you installed Bitwarden Plugin to Firefox?"; then
+  echo "Great, moving forward..."
+else
+  open "https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/"
+  echo "Please complete the required setup."
+fi
+
+if confirm "Have you installed vimimum to Firefox?"; then
+  echo "Great, moving forward..."
+else
+  open "https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/"
+  echo "Please complete the required setup."
+fi
+
+if confirm "Have you installed Multi-Account Container?"; then
+  echo "Great, moving forward..."
+else
+  open "https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/"
+  echo "Please complete the required setup."
+fi
+
+if confirm "Have you installed AXE Devtools?"; then
+  echo "Great, moving forward..."
+else
+  open "https://addons.mozilla.org/en-US/firefox/addon/axe-devtools/"
+  echo "Please complete the required setup."
+fi
+
 if confirm "Have you given mac yabai permission?"; then
   echo "Great, moving forward..."
 else
