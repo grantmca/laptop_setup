@@ -68,7 +68,7 @@ postgresql@14
 mysql@8.0
 node
 npm
-yabai
+koekeishiya/formulae/yabai
 tmux
 luarocks
 bat
