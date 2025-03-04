@@ -11,6 +11,19 @@ echo_color() {
   echo -e "${color}${message}${NC}"
 }
 
+confirm() {
+  local prompt="$1"
+  read -r -p "$prompt (y/N): " response
+  case "$response" in
+    [yY]|[yY][eE][sS])
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
 cd ~
 
 if ! command -v brew &> /dev/null; then
@@ -167,5 +180,14 @@ encrypted_files=(
 ansible-vault decrypt "${encrypted_files[@]}" 2>/dev/null || true
 
 git clone git@github.com:grantmca/notebook.git
+
+# Restart Service
+yabai --restart-service
+
+if confirm "Have you given mac yabai permission?"; then
+  echo "Great, moving forward..."
+else
+  echo "Please complete the required setup."
+fi
 
 echo_color $GREEN "Setup complete! Some changes may require a system restart to take effect."
