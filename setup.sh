@@ -50,6 +50,7 @@ brew update
 
 echo_color $YELLOW "Installing command line tools..."
 cli_tools=(
+pnpm
 imagemagick
 ipython
 ansible
@@ -105,6 +106,7 @@ visual-studio-code
 # firefox
 spotify
 # slack
+zoom
 ghostty
 aws-cli
 bitwarden
