@@ -25,6 +25,7 @@ brew update
 
 echo_color $YELLOW "Installing command line tools..."
 cli_tools=(
+ansible
 git
 curl
 tree
@@ -54,6 +55,7 @@ neofetch
 redis
 yazi
 stow
+bitwarden-cli
 )
 
 for tool in "${cli_tools[@]}"; do
@@ -143,6 +145,31 @@ wezterm
 for config in "${configs[@]}"; do
   echo_color $YELLOW "Configuring $config..."
   stow $config
+done
+
+cd ~
+
+# Install Zap
+
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+
+# Decrypt some of our files
+
+encrypted_files=(
+~/.dotfiles/github-copilot/.config/github-copilot/hosts.json
+~/.dotfiles/ssh/.ssh/id_rsa
+~/.dotfiles/ssh/.ssh/id_rsa.pub
+~/.dotfiles/task/.taskrc
+~/.dotfiles/zsh/.config/zsh/zsh-keys
+)
+
+for file in "${encrypted_files[@]}"; do
+  if [ -f "$file" ]; then
+    ansible-vault decrypt "$file" 2>/dev/null || true
+    echo "Attempted to decrypt: $file"
+  else
+    echo "File not found: $file"
+  fi
 done
 
 echo_color $GREEN "Setup complete! Some changes may require a system restart to take effect."
