@@ -41,6 +41,10 @@ else
   echo_color $GREEN "Homebrew is already installed"
 fi
 
+if ! command -v brew &> /dev/null; then
+  return 1
+fi
+
 echo_color $YELLOW "Updating Homebrew..."
 brew update
 
