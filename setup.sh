@@ -173,6 +173,7 @@ wezterm
 )
 
 for config in "${configs[@]}"; do
+  cd ~/.dotfiles
   echo_color $YELLOW "Configuring $config..."
   stow $config
 done
@@ -211,6 +212,7 @@ killall Dock
 
 # Restart Service
 yabai --restart-service
+skhd --start-service
 
 if confirm "Have you given mac yabai permission?"; then
   echo "Great, moving forward..."
