@@ -27,10 +27,10 @@ confirm() {
 cd ~
 
 if xcode-select --print-path &>/dev/null; then
-    echo "Apple Command Line Tools are already installed."
+  echo "Apple Command Line Tools are already installed."
 else
-    echo "Installing Apple Command Line Tools..."
-    xcode-select --install
+  echo "Installing Apple Command Line Tools..."
+  xcode-select --install
 fi
 
 if ! command -v brew &> /dev/null; then
@@ -50,41 +50,42 @@ brew update
 
 echo_color $YELLOW "Installing command line tools..."
 cli_tools=(
-pnpm
-imagemagick
-ipython
-ansible
-git
-curl
-tree
-htop
-jq
-neovim
-zk
-node
-rbenv
-solargraph
-pyenv
-pyright
-postgresql@14
-mysql@8.0
-node
-npm
-koekeishiya/formulae/yabai
-tmux
-luarocks
-bat
-dnsmasq
-eslint
-fzf
-lua
-skhd
-luajit
-neofetch
-redis
-yazi
-stow
-bitwarden-cli
+  task
+  pnpm
+  imagemagick
+  ipython
+  ansible
+  git
+  curl
+  tree
+  htop
+  jq
+  neovim
+  zk
+  node
+  rbenv
+  solargraph
+  pyenv
+  pyright
+  postgresql@14
+  mysql@8.0
+  node
+  npm
+  koekeishiya/formulae/yabai
+  tmux
+  luarocks
+  bat
+  dnsmasq
+  eslint
+  fzf
+  lua
+  skhd
+  luajit
+  neofetch
+  redis
+  yazi
+  stow
+  bitwarden-cli
 )
 
 
@@ -100,25 +101,25 @@ done
 # Install applications using Homebrew Cask
 echo_color $YELLOW "Installing applications..."
 apps=(
-docker
-# google-chrome
-visual-studio-code
-# firefox
-spotify
-# slack
-zoom
-ghostty
-aws-cli
-bitwarden
-chromedriver
-gimp
-obs
-microsoft-outlook
-libreoffice
-font-fira-code-nerd-font
-datagrip
-cyberduck
-chromium
+  docker
+  # google-chrome
+  visual-studio-code
+  # firefox
+  spotify
+  # slack
+  zoom
+  ghostty
+  aws-cli
+  bitwarden
+  chromedriver
+  gimp
+  obs
+  microsoft-outlook
+  libreoffice
+  font-fira-code-nerd-font
+  datagrip
+  cyberduck
+  chromium
 )
 
 for app in "${apps[@]}"; do
@@ -162,18 +163,18 @@ git config user.name "grantmca2221@gmail.com"
 cd ~
 
 configs=(
-ghostty
-htop
-nvim
-github-copilot
-ssh
-skhd
-task
-tmux
-yabai
-zsh
-zk
-wezterm
+  ghostty
+  htop
+  nvim
+  github-copilot
+  ssh
+  skhd
+  task
+  tmux
+  yabai
+  zsh
+  zk
+  wezterm
 )
 
 for config in "${configs[@]}"; do
@@ -200,11 +201,11 @@ fi
 # Decrypt some of our files
 
 encrypted_files=(
-~/.dotfiles/github-copilot/.config/github-copilot/hosts.json
-~/.dotfiles/ssh/.ssh/id_rsa
-~/.dotfiles/ssh/.ssh/id_rsa.pub
-~/.dotfiles/task/.taskrc
-~/.dotfiles/zsh/.config/zsh/zsh-keys
+  ~/.dotfiles/github-copilot/.config/github-copilot/hosts.json
+  ~/.dotfiles/ssh/.ssh/id_rsa
+  ~/.dotfiles/ssh/.ssh/id_rsa.pub
+  ~/.dotfiles/task/.taskrc
+  ~/.dotfiles/zsh/.config/zsh/zsh-keys
 )
 
 ansible-vault decrypt "${encrypted_files[@]}" 2>/dev/null || true
