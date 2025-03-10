@@ -50,6 +50,7 @@ brew update
 
 echo_color $YELLOW "Installing command line tools..."
 cli_tools=(
+  taskwarrior-tui
   task
   pnpm
   imagemagick
@@ -289,5 +290,13 @@ if confirm "Have you installed tmux tmp using ctrl a I?"; then
 else
   echo "Please complete the required setup."
 fi
+
+if confirm "Have you update the ctrl+shift+S?"; then
+  echo "Great, moving forward..."
+else
+  echo "Open System Settings (or System Preferences on older macOS versions).\nGo to Accessibility.\nScroll down and select Spoken Content.\nToggle on Speak selection.\nClick Options… to adjust the speaking voice and rate."
+  echo "Please complete the required setup."
+fi
+
 
 echo_color $GREEN "Setup complete! Some changes may require a system restart to take effect."
